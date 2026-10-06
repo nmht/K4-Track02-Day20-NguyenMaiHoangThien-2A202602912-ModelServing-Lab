@@ -38,8 +38,8 @@
     "model_repo": "unsloth/Qwen3.5-0.8B-GGUF",
     "primary_model_file": "Qwen3.5-0.8B-Q4_K_M.gguf",
     "compare_model_file": "Qwen3.5-0.8B-UD-Q2_K_XL.gguf",
-    "llama_cpp_backend": "CUDA",
-    "llama_cpp_cmake_flag": "-DGGML_CUDA=ON",
+    "llama_cpp_backend": "CPU",
+    "llama_cpp_cmake_flag": "-DGGML_NATIVE=ON",
     "llama_cpp_build": "b10488",
     "ram_sufficient": true,
     "fallback": null
