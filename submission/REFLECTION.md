@@ -6,7 +6,7 @@
 >
 > `make verify` sẽ fail nếu còn placeholder chưa điền. Đó là cố ý.
 
-**Họ Tên:** _Nguyen Mai Hoang Thien_
+**Họ Tên:** _Nguyễn Mai Hoàng Thiện_
 **MSSV:** _2A202602912_
 **Cohort:** _A20-K4_
 **Ngày submit:** _2026-10-06_
