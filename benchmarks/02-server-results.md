@@ -1,7 +1,7 @@
 # 02 - Serve: load test + saturation reading
 
-Host `Windows-AMD64` · llama.cpp `b10488` ·
-`--parallel 4` · `ctx=2048` · `threads=4` ·
+Host `Windows-AMD64` Â· llama.cpp `b10488` Â·
+`--parallel 4` Â· `ctx=2048` Â· `threads=4` Â·
 `ngl=0`
 
 | Users | Reqs | RPS | P50 (ms) | P95 (ms) | P99 (ms) | Eff. concurrency | Failures |
@@ -33,8 +33,8 @@ Throughput moved 0.86x while P95 moved 1.28x. That gap is the goodput argument: 
 > queued, effective concurrency is an **under**-estimate. Trust the throughput-scaling
 > row over the concurrency row here, and run longer (`-t 3m`) if you want firmer numbers.
 
-## Your reading (required -- replace this line)
+## Your reading (required)
 
-_Where does your server saturate, and what is the evidence? Name the number that
-convinced you. Then say what you would change first to raise goodput at your SLO --
-and why that knob and not another._
+The server is heavily saturated at 50 users (and likely even at 10). The clearest evidence is the **Throughput delivered (0.86x)**: despite a 5x increase in offered load (from 10 to 50 users), the throughput actually *decreased* from 0.28 RPS to 0.24 RPS, while P95 latency ballooned to 59,000ms.
+
+Because this is a compute-limited CPU environment, the bottleneck is purely CPU decoding capability. To raise goodput at an SLO of (for example) 30s, increasing `--parallel` slots would only worsen contention and slow down all queries. The most effective change here is to **upgrade hardware (add GPU offload)** to drastically reduce TPOT, or use an even smaller model so the CPU can decode tokens fast enough to clear the queue.
